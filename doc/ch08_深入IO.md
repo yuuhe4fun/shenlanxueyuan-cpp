@@ -169,7 +169,7 @@ int main()
   
   - 避免意义不明确的流使用方式（如`ifstream`+`out`）
 
-![](https://yuuhe4fun-1301159314.cos.ap-beijing.myqcloud.com/markdown_img/image-20220608202408411.png)
+![](../pic/image-20220608202408411.png)
 
 ```c++
 #include <iostream>
@@ -187,7 +187,7 @@ int main()
 
 - 合法的打开方式组合
 
-![](https://yuuhe4fun-1301159314.cos.ap-beijing.myqcloud.com/markdown_img/image-20220608204110252.png)
+![](../pic/image-20220608204110252.png)
 
 - 内存流：`basic_istringstream`/`basic_ostringstream`/`basic_stringstream`
 

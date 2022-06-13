@@ -110,13 +110,17 @@ int main()
 
 ## 文件与内存操作
 
-- 文件操作
+- 文件操作——`#include <fstream>`
   - `basic_ifstream`/`basic_ofstream`/`basic_fstream`
   
   - 文件流可以处于打开/关闭两种状态，处于打开状态时无法再次打开，只有打开时才能I/O
   
     `is_open`/`open`/`close`
   
+    创建文件流对象时如果提供了一个文件名，则`open`会被自动调用，即构造并打开；
+    
+    在新的C++标准中，文件名可以是库类型对象，也可以是C风格字符数组；
+    
     ```c++
     #include <iostream>
     #include <fstream>
@@ -133,7 +137,7 @@ int main()
         // outFile_2 << "Hello\n";
     }
     ```
-  
+    
     ```c++
     #include <iostream>
     #include <fstream>

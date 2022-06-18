@@ -75,5 +75,29 @@
 - 流的定位、同步和状态
 - 作业
 
-## ch09 动态内存管理
+## [ch09 动态内存管理](./doc/ch09_动态内存管理.md)
 
+- 动态内存基础
+- 智能指针
+- 动态内存的相关问题
+
+## [ch10 序列与关联容器](./doc/ch10_序列与关联容器.md)
+
+- 容器概述
+- 序列容器
+  - `array`容器模板
+  - `vector`容器模板
+  - `list`容器模板
+  - `forward_list`容器模板
+  - `deque`容器模板
+  - `basic_string`容器模板
+- 关联容器
+  - `set`
+  - `map`
+  - `multiset`/`multimap`
+  - `unordered_set`/`unordered_map`/`unordered_multiset`/`unordered_multimap`
+- 适配器与生成器
+  - 类型适配器
+  - 接口适配器
+  - 数值适配器
+  - 生成器

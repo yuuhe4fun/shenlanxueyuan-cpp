@@ -83,21 +83,65 @@
 - 数组到指针的隐式转换
 
   - 使用数组对象时，通常情况下会产生数组到指针的隐式转换
+
   - 隐式转换会丢失一部分类型信息
+
+    ```c++
+    #include <iostream>
+    #include <type_traits>
+    
+    int main()
+    {
+        int a[3] = {1, 2, 3};
+        std::cout << a[0] << std::endl;
+    
+        decltype(a) c;     // int[3]
+    
+        auto b = a;         // int* -> decay
+    }
+    ```
+
   - 可以通过声明引用来避免隐式转换
 
   ![](../pic/image-20220510164720157.png)
 
   - 注意：不要使用`extern`指针来声明数组
     - Unknown Bounded Array声明
+    
+      ```c++
+      #include <iostream>
+      #include <type_traits>
+      
+      void fun();
+      
+      extern int array; // unknown bounded array
+      
+      int main()
+      {
+          fun();
+          std::cout << array << std::endl;
+      }
+      ```
 
 - 获得指向数组开头与结尾的指针：`std::(c)begin`，`std::(c)end`
+
+  ```c++
+  int a[3] = {1, 2, 3};
+  std::begin(a);   // int*
+  std::cbegin(a);  // const int*
+  ```
+
+  ![](../pic/image-20220510164720157.png)
+
+  `std::(c)begin` ——> 64
+
+  ``std::(c)end` ——> 80
 
 - 指针算术：
 
   - 增加、减少
   - 比较
-  - 求距离
+  - 求距离 ——> 返回两个指针之间元素的个数
   - 解引用
   - 指针索引
 

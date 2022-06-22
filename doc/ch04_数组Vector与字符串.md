@@ -149,12 +149,94 @@
 
 - 求元素个数
   - `sizeof`方法
-  - `std::size`方法
-  - `(c)end - (c)begin`方法
+  
+  - `std::size`方法 ——> 推荐的一种方法
+  
+    ```c++
+    #include <array>
+    #include <algorithm>
+    #include <iostream>
+    
+    int main()
+    {
+        int a[13];
+        std::cout << std::size(a) << std::endl;
+    }
+    ```
+  
+  - `(c)end - (c)begin`方法 ——> 运行期的方法，会增加运行所用时间
+  
+    ```c++
+    #include <array>
+    #include <algorithm>
+    #include <iostream>
+    
+    int main()
+    {
+        int a[3];
+        auto b = a;               // 退化，损失了部分信息
+        // 以下两个语句结论不同
+        std::cout << sizeof(a) / sizeof(int) << std::endl;    // 3
+        std::cout << sizeof(b) / sizeof(int) << std::endl;    // 2
+    }
+    ```
+  
 - 元素遍历
   - 基于元素个数
+  
+    ```c++
+    #include <array>
+    #include <algorithm>
+    #include <iostream>
+    
+    int main()
+    {
+        int a[4] = {2, 3, 5, 7};
+        size_t index = 0;
+        while (index < std::size(a))
+        {
+            std::cout << a[index] << std::endl;
+            index += 1;
+        }
+    }
+    ```
+  
   - 基于`(c)begin/(c)end`
+  
+    ```c++
+    #include <array>
+    #include <algorithm>
+    #include <iostream>
+    
+    int main()
+    {
+        int a[4] = {2, 3, 5, 7};
+        auto ptr = std::cbegin(a);
+        while (ptr != std::cend(a))
+        {
+            std::cout << *ptr << std::endl;
+            ptr += 1;
+        }
+    }
+    ```
+  
   - 基于`range-based for`循环
+  
+    ```c++
+    #include <array>
+    #include <algorithm>
+    #include <iostream>
+    
+    int main()
+    {
+        int a[4] = {2, 3, 5, 7};
+    
+        for (int x : a)
+        {
+            std::cout << x << std::endl;
+        }
+    }
+    ```
 
 ### C字符串
 

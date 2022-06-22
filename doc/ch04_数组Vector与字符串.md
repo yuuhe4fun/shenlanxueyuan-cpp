@@ -220,7 +220,7 @@
     }
     ```
   
-  - 基于`range-based for`循环
+  - 基于`range-based for`循环 ——> 语法糖
   
     ```c++
     #include <array>
@@ -241,6 +241,17 @@
 ### C字符串
 
 - C字符串本质上也是数组
+
+  ```c++
+  int main()
+  {
+      char str[] = "Hello";   // char[6] null-terminated string
+      auto ptr = str;    // char*
+      std::cout << strlen(str) << std::endl;   // 5
+      std::cout << strlen(ptr) << std::endl;   // 5
+  }
+  ```
+
 - C语言提供了额外的函数来支持C字符串相关的操作：`strlen`，`strcmp`...
 
 ### 多维数组

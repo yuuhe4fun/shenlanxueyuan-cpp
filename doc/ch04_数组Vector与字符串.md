@@ -258,10 +258,49 @@
 
 - 本质：数组的数组
   - `int a[3][4];`
+  
+    ```c++
+    #include <iostream>
+    
+    int main()
+    {
+        int a[3][4];
+        std::cout << sizeof(int) << std::endl;
+        std::cout << sizeof(a[0]) << std::endl;
+        std::cout << std::is_same_v<decltype(a[0]), int(&)[4]> << std::endl;
+    }
+    ```
+  
 - 多维数组的聚合初始化：一层大括号 V.S. 多层大括号
+
+  - 聚合初始化可以省略最高位的数，但不建议这样：`int a[][4];`
+
 - 多维数组的索引与遍历
   - 使用多个中括号来索引
+
   - 使用多重循环来遍历
+
+    ```c++
+    #include <iostream>
+    
+    int main()
+    {
+        int x2[3][4][5] = {1, 2, 3, 4, 5};
+        for (auto& p : x2)
+        {
+            for (auto& q : p)
+            {
+                for (auto r : q)
+                {
+                    {
+                        std::cout << r << '\n';
+                    }
+                }
+            }
+        }
+    }
+    ```
+
 - 指针与多维数组
   - 多维数组可以隐式转换为指针，但只有最高维会进行转换，其他维度的信息会被保留
   - 使用类型别名来简化多维数组指针的声明

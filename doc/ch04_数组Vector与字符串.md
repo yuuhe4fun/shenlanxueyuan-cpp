@@ -301,10 +301,63 @@
     }
     ```
 
+    ```c++
+    #include <iostream>
+    
+    int main()
+    {
+        int x2[3][4] = {1, 2, 3, 4, 5};
+        size_t index0 = 0;
+        while (index0 < std::size(x2))
+        {
+            size_t index1 = 0;
+            while (index1 < std::size(x2[index0]))
+            {
+                std::cout << x2[index0][index1] << std::endl;
+                index1 = index1 + 1;
+            }
+            index0 = index0 + 1;
+        }
+    }
+    ```
+
 - 指针与多维数组
   - 多维数组可以隐式转换为指针，但只有最高维会进行转换，其他维度的信息会被保留
+
   - 使用类型别名来简化多维数组指针的声明
+
+    ```c++
+    #include <iostream>
+    
+    using A2 = int [4][5];
+    int main()
+    {
+        int x2[3][4][5];
+        A2* ptr = x2;
+    }
+    ```
+
   - 使用指针来遍历多维数组
+
+    ```c++
+    #include <iostream>
+    
+    int main()
+    {
+        int x2[3][4] = {};
+        auto ptr = std::begin(x2);
+        while (ptr != std::end(x2))
+        {
+            auto ptr2 = std::begin(*ptr);
+            while (ptr2 != std::end(*ptr))
+            {
+                std::cout << *ptr2 << std::endl;
+                ptr2 += 1;
+            }
+            ptr += 1;
+        }
+    }
+    ```
 
 ## 2. vector ——> 序列容器
 
@@ -317,7 +370,7 @@
 using std::vector;
 vector<int> x;
 
-// 方法二：std::vect<int> x;
+// 方法二：std::vector<int> x;
 // vector的类型为：vector<int>
 ```
 
